@@ -1,0 +1,48 @@
+.qw-page {
+  position      : absolute;
+  height        : 100%;
+  width         : 100%;
+  display       : flex;
+  flex-direction: column;
+
+  .qw-page-main {
+    position                  : relative;
+    height                    : inherit;
+    flex                      : 1;
+    overflow                  : scroll;
+    display                   : flex;
+    flex-direction            : column;
+    width                     : 100%;
+    -webkit-overflow-scrolling: touch;
+    z-index                   : 1;
+    background-image          : url(http://qiniu.smallbook.cn/qw-bg.png);
+    background-size           : 100% 117px;
+    background-repeat         : repeat-y;
+
+    .qw-swiper {
+      height    : 100%;
+      width     : 100%;
+      flex      : 1;
+      background: #fff;
+      position  : relative;
+      overflow-y: scroll;
+
+      .qw-swiper-item {
+        height  : 100%;
+        width   : 100%;
+        overflow: scroll;
+      }
+    }
+  }
+
+  .qw-page-bottom {
+    background: #ffffff;
+    box-shadow: 0 4px 26px 0 rgba(0, 0, 0, 0.17);
+  }
+  .pagination-message {
+    padding: 20px;
+    color: #a5a5a5;
+    text-align: center;
+    font-size: 28px;
+  }
+}

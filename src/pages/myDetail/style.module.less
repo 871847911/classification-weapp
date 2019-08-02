@@ -1,0 +1,122 @@
+.MyDetail {
+  display        : flex;
+  justify-content: center;
+  align-items    : center;
+  height         : 100%;
+
+  .listBox {
+    width   : 640px;
+    height  : 1000px;
+    margin  : 0 auto;
+    position: relative;
+    overflow: hidden;
+
+    .bg {
+      position: absolute;
+      left    : 0px;
+      top     : 0px;
+      width   : 100%;
+      height  : 100%;
+      z-index : 1;
+    }
+
+    .listMain {
+      width          : 100%;
+      height         : 100%;
+      left           : 0;
+      top            : 0;
+      position       : absolute;
+      z-index        : 2;
+      display        : flex;
+      flex-direction : column;
+      justify-content: flex-start;
+
+      .typeName {
+        width        : 400px;
+        height       : 90px;
+        line-height  : 90px;
+        font-size    : 50px;
+        font-weight  : 600;
+        text-align   : center;
+        color        : #333333;
+        border-radius: 50px;
+        margin       : 0 auto;
+        margin-top   : 10px;
+        margin-top   : 60px;
+      }
+
+      .listBox {
+        flex          : 1;
+        padding-bottom: 100px;
+        overflow-y    : auto;
+
+        .itemBox {
+          margin       : 20px 30px 0 30px;
+          padding      : 20px 0;
+          border-bottom: 4px solid #DAD9D9;
+
+          .name {
+            font-size: 32px;
+            color    : 000;
+          }
+
+          .date {
+            font-size: 24px;
+            color    : #4A4A4A;
+          }
+        }
+
+        .noMore {
+          text-align : center;
+          font-size  : 28px;
+          font-family: PingFangSC-Regular;
+          font-weight: 400;
+          color      : rgba(74, 74, 74, 1);
+          padding    : 20px 0;
+        }
+
+        .noData {
+          width          : 100%;
+          height         : 100%;
+          display        : flex;
+          justify-content: center;
+          align-items    : center;
+
+          .mainBox {
+            text-align    : center;
+            padding-bottom: 180px;
+
+            .images {
+              width : 150px;
+              height: 200px;
+            }
+
+            .text {
+              padding-top: 20px;
+              font-size  : 26px;
+              color      : #4A4A4A;
+            }
+          }
+
+        }
+      }
+
+      .typeName4 {
+        background: rgba(41, 180, 255, 0.5);
+      }
+
+      .typeName1 {
+        background: rgba(71, 196, 136, 0.5);
+      }
+
+      .typeName2 {
+        background: rgba(242, 201, 65, 0.5);
+      }
+
+      .typeName3 {
+        background: rgba(221, 68, 79, 0.5);
+      }
+    }
+
+  }
+}

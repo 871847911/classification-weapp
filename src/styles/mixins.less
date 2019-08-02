@@ -1,0 +1,93 @@
+/**
+ * 对于部分不兼容的样式，可以通过 mixins 统一处理
+ */
+
+.eject(@attr, @value) {
+  /*postcss-pxtransform rn eject enable*/
+  @{attr}: @value;
+  /*postcss-pxtransform rn eject disable*/
+}
+.hairline(@attr) {
+  @attr: 1px;
+  .eject(@attr, 1PX);
+}
+
+.text-ellipsis() {
+  /*postcss-pxtransform rn eject enable*/
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  /*postcss-pxtransform rn eject disable*/
+}
+
+/**
+ * NOTE 实现多行文本省略，RN 用 Text 标签的 numberOfLines，H5/小程序用 -webkit-line-clamp
+ */
+.lamp-clamp(@line) { // 如果是仅有 1 行，则使用 .text-ellipsis
+  /*postcss-pxtransform rn eject enable*/
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: @line;
+  /* autoprefixer: ignore next */
+  -webkit-box-orient: vertical;
+  /*postcss-pxtransform rn eject disable*/
+}
+
+/* 弹性布局 混入 */
+.display-flex() {
+  display: flex;
+}
+.flex-wrap(@value: nowrap) {
+  flex-wrap: @value;
+}
+.flex-flow(@value: row) {
+  flex-flow: @value;
+  // -webkit-flex-flow: @value; css编译器将自动补充
+}
+.align-items(@value: stretch) {
+  align-items: @value;
+  /* -webkit-box-align: @value; */
+  & when (@value = 'flex-start') {
+    -webkit-box-align: start;
+  }
+  & when (@value = 'flex-end') {
+    -webkit-box-align: end;
+  }
+  & when not (@value = 'flex-start') and not (@value = 'flex-end') {
+    -webkit-box-align: @value;
+  }
+}
+
+.align-content(@value: flex-start) {
+  align-content: @value;
+}
+
+.justify-content(@value: flex-start) {
+  justify-content: @value;
+  /* -webkit-box-pack: @value; */
+  & when (@value = flex-start){
+    -webkit-box-pack: start;
+  }
+  & when (@value = flex-end) {
+    -webkit-box-pack: end;
+  }
+  & when (@value = space-between) {
+    -webkit-box-pack: justify;
+  }
+  & when not (@value = flex-start) and not (@value = flex-end) and not (@value = space-between) {
+    -webkit-box-pack: @value;
+  }
+}
+
+.flex-inner(@fg: 1, @fs: null, @fb: null) {
+  flex: @fg @fs @fb;
+  -webkit-box-flex: @fg;
+}
+.flex-order(@n) {
+  order: @n;
+  -webkit-box-ordinal-group: @n;
+}
+.align-self(@value: auto) {
+  align-self: @value;
+}

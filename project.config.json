@@ -1,0 +1,109 @@
+{
+	"miniprogramRoot": "dist/",
+	"projectname": "webview-h5",
+	"description": "多端应用开发基础结构",
+	"appid": "wx68bffb44b491444e",
+	"setting": {
+		"urlCheck": false,
+		"es6": false,
+		"postcss": false,
+		"minified": false,
+		"newFeature": true,
+		"autoAudits": false
+	},
+	"compileType": "miniprogram",
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"list": []
+		},
+		"miniprogram": {
+			"current": 3,
+			"list": [
+				{
+					"id": -1,
+					"name": "首页入口界面",
+					"pathName": "pages/home/home",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "入口-index",
+					"pathName": "pages/index/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "识别内容",
+					"pathName": "pages/distinguish/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 3,
+					"name": "详情",
+					"pathName": "pages/details/index",
+					"query": "tag=电脑",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "送她回家",
+					"pathName": "pages/add/index",
+					"query": "tag=汤",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "我的",
+					"pathName": "pages/my/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 6,
+					"name": "编辑",
+					"pathName": "pages/edit/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 7,
+					"name": "贡献详情",
+					"pathName": "pages/myDetail/index",
+					"query": "type=4",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "指南",
+					"pathName": "pages/guide/index",
+					"query": "type=4",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "更多",
+					"pathName": "pages/more/index",
+					"query": "type=4",
+					"scene": null
+				}
+			]
+		}
+	}
+}
