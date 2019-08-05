@@ -23,26 +23,14 @@ export default class Details extends Component<PageOwnProps, any> {
 
   componentDidShow() {
     Taro.showLoading({ title: '加载中...' })
-
     const { tag, root, score, isIndex, userId, imgUrl } = this.$router.params;
+    console.log(this.$router.params);
     Taro.getStorage({ key: 'userInfo' })
       .then(res => {
         this.setState({
           userIdd: res.data.userId
         })
       })
-    if (isIndex == 1) {
-      this.setState({
-        isShowImg: false
-      })
-    } else {
-      Taro.getStorage({ key: 'tempFilePaths' })
-        .then(res => {
-          this.setState({
-            imgUrl: imgUrl || res.data
-          })
-        })
-    }
     queryRefuseClassByTag({ tag }).then((data: any) => {
       Taro.hideLoading()
       if (data.msg !== 'success') {
@@ -55,21 +43,37 @@ export default class Details extends Component<PageOwnProps, any> {
         detail: data.data,
         tag
       })
-      if (userId || isIndex) {
-        return
+      if (isIndex == 1) {
+        this.setState({
+          isShowImg: false
+        })
+      } else if (!userId) {
+        this.setState({
+          imgUrl: imgUrl
+        })
+      } else {
+        Taro.getStorage({ key: 'tempFilePaths' })
+          .then(res => {
+            this.setState({
+              imgUrl: res.data
+            }, () => {
+              this.saveLog(data.data.type)
+            })
+          })
       }
-      this.saveLog(data.data.type)
     })
   }
   saveLog = (type: any) => {
     const { tag, root, score, isIndex } = this.$router.params;
+    const { imgUrl } = this.state
     let param = {}
     if (root && score) {
       param = {
         refusetype: type,
         keyword: tag,
         root,
-        score
+        score,
+        imgurl: imgUrl
       }
     } else {
       param = {
@@ -102,7 +106,7 @@ export default class Details extends Component<PageOwnProps, any> {
     return {
       title: tag + '属于' + detail.cName,
       desc: '你是什么垃圾，赶紧来测一测吧！',
-      path: 'pages/details/index?tag=' + tag + '&root=' + root + '&score=' + score + '&isIndex=' + isIndex + '&userId=' + userIdd,
+      path: 'pages/details/index?tag=' + tag + '&root=' + root + '&score=' + score + '&isIndex=' + isIndex + '&userId=' + userIdd + '&imgUrl=' + imgUrl,
       success: function (res: any) {
         // 转发成功
         console.log("转发成功:" + JSON.stringify(res));
