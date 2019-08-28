@@ -44,10 +44,13 @@ export default class Details extends Component<PageOwnProps, any> {
         tag
       })
       if (isIndex == 1) {
+        //搜索直接到详情 不展示图片
         this.setState({
           isShowImg: false
         })
-      } else if (!userId) {
+      } else if (userId) {
+        console.log(userId);
+        //带userId为分享进来的图片 直接展示分享进来的图
         this.setState({
           imgUrl: imgUrl
         })
